@@ -111,8 +111,7 @@ RUN yarn install \
 
 COPY --chown=nonroot:nonroot . /app
 
-RUN bundle exec rails assets:precompile \
-  && yarn cache clean \
+RUN yarn cache clean \
   && (rm -rf /tmp/* || true) \
   # Cleanup
   && rm -rf $BUNDLE_PATH/*.gem \
