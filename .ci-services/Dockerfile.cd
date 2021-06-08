@@ -104,8 +104,7 @@ ENV NODE_ENV=test
 # ENV CABLE_URL=fake
 # ARG RAILS_MASTER_KEY=1
 
-RUN bundle config set --local \
-  && bundle install
+RUN bundle install
 
 RUN yarn install \
   && (rm -rf /tmp/* || true)
