@@ -121,7 +121,7 @@ RUN bundle exec rake assets:precompile \
   # TODO: ADD COMMENT
   && find $BUNDLE_PATH/ruby -name ".git"  -type d -prune -execdir rm -rf {} +
 
-# RUN bundle config set --local without assets
+RUN bundle config set --local without assets
 
 # https://github.com/rubygems/rubygems/issues/3225
 RUN rm -rf /usr/local/bundle/ruby/*/cache
