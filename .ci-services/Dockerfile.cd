@@ -171,7 +171,7 @@ COPY --chown=nonroot:nonroot --from=test_gems_and_assets $BUNDLE_PATH $BUNDLE_PA
 # Copy app code
 COPY --chown=nonroot:nonroot . /app
 # Copy prebuilt assets
-COPY --chown=nonroot:nonroot --from=test_gems_and_assets /app/public/packs /app/public/packs
+COPY --chown=nonroot:nonroot --from=test_gems_and_assets /app/public/packs-test /app/public/packs-test
 
 USER nonroot
 
