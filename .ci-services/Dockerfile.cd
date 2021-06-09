@@ -38,7 +38,10 @@ ENV LANG=C.UTF-8
 ENV PATH /app/bin:$PATH
 
 RUN groupadd --gid 1001 nonroot \
-  && useradd --uid 1001 --gid nonroot --shell /bin/bash --create-home nonroot
+  && useradd --uid 1001 --gid nonroot --shell /bin/bash --create-home nonroot \
+  && usermod -p "*" nonroot && \
+  usermod -aG sudo nonroot && \
+  echo "nonroot ALL=NOPASSWD: ALL" >> /etc/sudoers.d/50-nonroot
 
 # Upgrade RubyGems and install required Bundler version
 RUN gem update --system && \
