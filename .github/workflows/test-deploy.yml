@@ -1,14 +1,13 @@
 name: Test and deploy
 
-on:
-  release:
-    types: [published]
+# on:
+  # release:
+  #   types: [published]
+
+on: [push]
 
 jobs:
-  test:
-    env:
-      RAILS_ENV: test
-      NODE_ENV: test
+  test_and_deploy:
     runs-on: ubuntu-latest # runner
     
     services:
@@ -69,6 +68,9 @@ jobs:
    
     - name: Build code for test
       uses: docker/build-push-action@v2
+      env:
+      RAILS_ENV: test
+      NODE_ENV: test
       with:
         push: false
         file: .ci-services/Dockerfile.cd
@@ -85,6 +87,9 @@ jobs:
 
     - name: Build code for deployment
       uses: docker/build-push-action@v2
+      env:
+      RAILS_ENV: production
+      NODE_ENV: production
       with:
         push: false
         file: .ci-services/Dockerfile.cd
