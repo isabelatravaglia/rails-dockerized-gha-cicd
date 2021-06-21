@@ -141,7 +141,8 @@ ENV RAILS_ENV=production
 ENV NODE_ENV=production
 # Faking it so the image can build
 # ENV CABLE_URL=fake
-# ARG RAILS_MASTER_KEY=1
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY = $RAILS_MASTER_KEY
 
 RUN bundle config set --local without 'development test' \
   && bundle install
