@@ -32,16 +32,6 @@ jobs:
           - /dev/shm:/dev/shm
 
     steps:
-    # - name: echo key size
-    #   shell: bash
-    #   run: |
-    #     KEY=${{ secrets.RAILS_MASTER_KEY }}
-    #     echo {$#KEY}
-    #     echo $KEY
-    #     TEST=${{ secrets.THIS_IS_A_TEST }}
-    #     echo {$#TEST}
-    #     echo $TEST
-
 
     - name: Output services network
       id: network
@@ -103,8 +93,6 @@ jobs:
         cache-from: type=local,src=/tmp/.buildx-main-cache
         cache-to: type=local,mode=max,dest=/tmp/.buildx-main-cache-new
         tags: ${{ steps.tags.outputs.prod_tagged_image }}
-        secrets: |
-            "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}"
 
     # - name: Push to Heroku
     #   env:
