@@ -32,7 +32,10 @@ jobs:
           - /dev/shm:/dev/shm
 
     steps:
-
+    - name: echo key size
+      run: |
+        wc -c ${{ secrets.RAILS_MASTER_KEY }}
+        
     - name: Output services network
       id: network
       run: |
@@ -80,7 +83,6 @@ jobs:
     - name: Run Tests
       run: |
         TEST_IMAGE_TAG=${{ steps.tags.outputs.test_tagged_image }} SERVICES_NETWORK=${{ steps.network.outputs.services_network }} docker-compose -f .ci-services/docker-compose.test.services.yml run test
-
 
     - name: Build code for deployment
       uses: docker/build-push-action@v2
