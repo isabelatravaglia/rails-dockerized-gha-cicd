@@ -34,8 +34,9 @@ jobs:
     steps:
     - name: echo key size
       run: |
-        wc -c ${{ secrets.RAILS_MASTER_KEY }}
-        
+        KEY=${{ secrets.RAILS_MASTER_KEY }}
+        echo {$#KEY}  
+
     - name: Output services network
       id: network
       run: |
