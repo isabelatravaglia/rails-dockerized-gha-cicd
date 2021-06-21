@@ -68,9 +68,6 @@ jobs:
    
     - name: Build code for test
       uses: docker/build-push-action@v2
-      env:
-        RAILS_ENV: test
-        NODE_ENV: test
       with:
         push: false
         file: .ci-services/Dockerfile.cd
@@ -87,9 +84,6 @@ jobs:
 
     - name: Build code for deployment
       uses: docker/build-push-action@v2
-      env:
-        RAILS_ENV: production
-        NODE_ENV: production
       with:
         push: false
         file: .ci-services/Dockerfile.cd
