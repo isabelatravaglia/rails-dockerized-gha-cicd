@@ -33,9 +33,15 @@ jobs:
 
     steps:
     - name: echo key size
+      shell: bash
       run: |
         KEY=${{ secrets.RAILS_MASTER_KEY }}
-        echo {$#KEY}  
+        echo {$#KEY}
+        echo $KEY
+        TEST = ${{ secrets.THIS_IS_A_TEST }}
+        echo {$#TEST}
+        echo $TEST
+
 
     - name: Output services network
       id: network
