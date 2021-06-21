@@ -92,6 +92,8 @@ jobs:
         cache-from: type=local,src=/tmp/.buildx-main-cache
         cache-to: type=local,mode=max,dest=/tmp/.buildx-main-cache-new
         tags: ${{ steps.tags.outputs.prod_tagged_image }}
+        secrets: |
+            "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}"
 
     # - name: Push to Heroku
     #   env:
